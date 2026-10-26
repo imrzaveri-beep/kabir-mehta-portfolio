@@ -1,0 +1,6 @@
+import sharp from 'sharp';import fs from 'node:fs/promises';
+const logo=await fs.readFile('public/logo.svg');
+for(const [slug,title,subtitle] of [['home','Thoughtful design.','Useful products. A little personality.'],['paykaro','PayKaro','Making UPI feel effortless.'],['greencart','GreenCart','Good groceries. Less friction.'],['mednest','MedNest','More time for the person.'],['yatra-lite','Yatra Lite','Big adventures. A lighter app.']]){
+ const svg=Buffer.from(`<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630"><rect width="1200" height="630" fill="#0b0d12"/><circle cx="1070" cy="90" r="390" fill="#1b173a"/><circle cx="1090" cy="70" r="270" fill="#12313d"/><text x="72" y="110" fill="#64e8f4" font-family="monospace" font-size="18">KABIR MEHTA / PRODUCT DESIGNER</text><text x="72" y="265" fill="#f5f5f7" font-family="Arial" font-size="76" font-weight="700">${title}</text><text x="76" y="330" fill="#b8a7ff" font-family="Arial" font-size="31">${subtitle}</text><text x="76" y="570" fill="#a9afbd" font-family="Arial" font-size="17">Fictional portfolio · Demo stories and metrics</text></svg>`);
+ await sharp(svg).composite([{input:await sharp(logo).resize(320,100).png().toBuffer(),left:70,top:410}]).png().toFile('public/images/og-'+slug+'.png');
+}

@@ -1,0 +1,1 @@
+import {routes,SITE} from '@/lib/data';export const dynamic='force-static';export default function sitemap(){return ['',...routes].map(r=>({url:SITE+'/'+(r?r+'/':''),lastModified:'2026-10-26',changeFrequency:'monthly',priority:r?.7:1}))}

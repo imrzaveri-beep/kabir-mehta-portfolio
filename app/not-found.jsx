@@ -1,0 +1,1 @@
+import {Intro,Button} from '@/components/pages';export default function NotFound(){return <><Intro eyebrow="404 / A small detour" title="This page wandered off." description="Let’s get you back to something useful."/><div className="wrap section-bottom"><Button href="/">Back to home</Button></div></>}
